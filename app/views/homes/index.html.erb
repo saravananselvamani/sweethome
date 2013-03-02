@@ -1,0 +1,15 @@
+<div class="container well well-large">
+   
+<ul class="thumbnails">
+	<% @homes.each do |home| %>
+	   <li class="span4">
+		<div class="thumbnail">
+			<img src= "<%= home.image_path %> "/>
+			<div class="actions">
+			<a href="<%=edit_home_path(home) %>" class="btn btn-primary">Edit</a>
+			</div>
+		</div>
+	</li>  
+	<% end %>
+</ul>
+</div>

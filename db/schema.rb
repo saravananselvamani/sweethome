@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20130301174452) do
     t.text     "address"
     t.string   "home_phone"
     t.string   "office_phone"
+    t.boolean  "rent_or_sale"
+    t.integer  "amount"
     t.integer  "person_id"
     t.datetime "created_at"
     t.datetime "updated_at"
