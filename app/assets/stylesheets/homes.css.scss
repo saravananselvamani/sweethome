@@ -13,3 +13,15 @@
 .more{
 	float:right;
 }
+
+#home_image{
+	opacity:0;
+}
+.thumbnail.span6.photo:nth-of-type(2n+1):not(:first-child){
+	margin-left:0px;
+}
+
+.photo > label{
+	width:100%;
+	height:100%;
+}

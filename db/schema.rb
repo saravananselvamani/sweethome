@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20130302112321) do
   end
 
   create_table "images", force: true do |t|
+    t.string   "name"
     t.integer  "owner_id"
     t.string   "owner_type"
     t.datetime "created_at"
