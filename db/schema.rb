@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20130323130743) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "lat"
-    t.string   "lon"
+    t.string   "lng"
   end
 
   create_table "images", force: true do |t|

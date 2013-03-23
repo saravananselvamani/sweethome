@@ -1,7 +1,7 @@
 class AddLatLonToHome < ActiveRecord::Migration
   def up
     add_column :homes, :lat, :string
-    add_column :homes, :lon, :string
+    add_column :homes, :lng, :string
     remove_column :homes, :near_location
   end
 

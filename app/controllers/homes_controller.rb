@@ -29,7 +29,7 @@ class HomesController < ApplicationController
 
   private
   def filtered_params
-    params[:home].permit(:name, :rent_or_sale, :address, :home_phone, :office_phone, :amount, :image_ids)
+    params[:home].permit(:name, :rent_or_sale, :address, :home_phone, :office_phone, :amount, :image_ids, :lat, :lng)
   end
 
   def update_images
