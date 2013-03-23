@@ -1,29 +1,39 @@
 class HomesController < ApplicationController
-    protect_from_forgery
-	def new 
-	end
+  protect_from_forgery
 
-	def create
-		Home.new(filtered_params.merge!(:person_id => 1)).save!
-		redirect_to homes_path
-	end
+  def new
+  end
 
-	def index
-		@homes = Home.where(:person_id => 1)
-	end
+  def create
+    @home = Home.new(filtered_params.merge!(:person_id => 1))
+    @home.save
+    update_images
+    redirect_to homes_path
+  end
 
-    def edit
-      @home = Home.find(params[:id])
-      render :new
-    end
+  def index
+    @homes = Home.where(:person_id => 1)
+  end
 
-    def update
-      Home.find(params[:id]).update(filtered_params)
-      redirect_to homes_path
-    end
+  def edit
+    @home = Home.find(params[:id])
+    render :new
+  end
 
-	private
-	def filtered_params
-		params[:home].permit(:name, :rent_or_sale, :address, :home_phone, :office_phone, :amount)
-	end
+  def update
+    @home = Home.find(params[:id])
+    @home.update(filtered_params)
+    update_images
+    redirect_to homes_path
+  end
+
+  private
+  def filtered_params
+    params[:home].permit(:name, :rent_or_sale, :address, :home_phone, :office_phone, :amount, :image_ids)
+  end
+
+  def update_images
+    images = Image.where(id:params[:home][:image_ids])
+    images.each {|image| @home.images << image}
+  end
 end

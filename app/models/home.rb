@@ -1,4 +1,5 @@
 class Home < ActiveRecord::Base
+  has_many :images, as: :owner
 	validates :amount, :address, :presence => true
 	validate :check_phone_no_presence
 

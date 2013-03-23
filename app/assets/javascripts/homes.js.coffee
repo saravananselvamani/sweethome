@@ -4,12 +4,8 @@
 
 
 home_image = $("[type=file]")
-home_label_image = $("[for=home_image]")
-home_label_image.bind("click", (evt)-> window.homeImageLabel = evt.target;)
-
-onChange = (evt)->
+imageUploaderCallback = (evt)->
 	formData = new FormData()
-	window.targetElement = evt.target
 	files = home_image[0].files
 	$.each(files, (itemno)-> formData.append("images[]", files[itemno]))
 	$.ajax
@@ -21,18 +17,24 @@ onChange = (evt)->
 		"success": successEvent
 
 successEvent = (res)->
-	label = window.homeImageLabel
-	window.homeImageLabel = null
-	img = document.createElement("img") 
-	img.src = "/images/"+res['image_id']
-	label.parentElement.replaceChild(img, label)
-	image = document.createElement("input")
-	image.hidden = true
-	image.name = "image_ids[]"
-	image.value = res["image_id"]
-	$(".image_ids").append(image)
+  img = document.createElement("img")
+  img.src = "/images/"+res['image_id']
+  $(".images")[0].appendChild(img)
+  setImageWidth()
+  image = document.createElement("input")
+  image.type="hidden"
+  image.name = "home[image_ids][]"
+  image.setAttribute('value', res["image_id"])
+  $(".image_ids").append(image)
+
+setImageWidth = ->
+  images = $(".images")
+  carouselWidth = (images[0].childElementCount)  * 180;
+  console.log(carouselWidth)
+  images[0].style.width =  carouselWidth + "px"
 
 
-home_image.bind("change", onChange)
+home_image.bind("change", imageUploaderCallback)
 
-                
+$ ->
+  setImageWidth()

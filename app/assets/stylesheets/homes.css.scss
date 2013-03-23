@@ -17,11 +17,47 @@
 #home_image{
 	opacity:0;
 }
-.thumbnail.span6.photo:nth-of-type(2n+1):not(:first-child){
-	margin-left:0px;
+.thumbnail{
+  width: 100px;
+  height: 100px;;
 }
 
+.thumbnails .photo{
+  display:inline-block;
+}
 .photo > label{
 	width:100%;
 	height:100%;
 }
+.wrapper{
+  box-sizing: border-box;
+  margin: 0px 13px 0 13px;
+}
+.image_holder{
+  height: 175px;
+  width: 893px !important;
+  border: 1px solid cadetblue;
+  overflow: hidden;
+  .left_scroller{
+    display:none;
+    width: 20px;
+    height: 100%;
+    background: whitesmoke;
+  }
+  .left_scroller:hover{
+    display:inline;
+    background: whitesmoke;
+  }
+
+   img{
+     width:175px;
+     height:100%;
+     padding: 2px 0px 2px 2px;
+     box-sizing: border-box;
+   }
+}
+
+.upload_button{
+  margin-top:8px;
+}
+
