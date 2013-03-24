@@ -1,4 +1,4 @@
-class HomesController < ApplicationController
+class Owner::HomesController < ApplicationController
   protect_from_forgery
 
   def new
@@ -12,7 +12,7 @@ class HomesController < ApplicationController
     @home = Home.new(filtered_params.merge!(:person_id => 1))
     @home.save
     update_images
-    redirect_to homes_path
+    redirect_to owner_homes_path
   end
 
   def index
@@ -28,7 +28,7 @@ class HomesController < ApplicationController
     @home = Home.find(params[:id])
     @home.update(filtered_params)
     update_images
-    redirect_to homes_path
+    redirect_to owner_homes_path
   end
 
   private
