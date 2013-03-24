@@ -4,6 +4,10 @@ class HomesController < ApplicationController
   def new
   end
 
+  def search
+
+  end
+
   def create
     @home = Home.new(filtered_params.merge!(:person_id => 1))
     @home.save

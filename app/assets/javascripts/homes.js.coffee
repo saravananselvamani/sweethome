@@ -35,17 +35,11 @@ setImageWidth = ->
 
 
 home_image.bind("change", imageUploaderCallback)
-processSearchResult = ->
-  place = this.getPlace()
-  console.log(place)
-  $(".lat")[0].setAttribute('value', place.geometry.location.lat())
-  $(".lng")[0].setAttribute('value', place.geometry.location.lng())
 
 $ ->
   setImageWidth()
-  input = document.getElementById('near_location');
-  options =
-   types: ['(cities)'],
-   componentRestrictions: {country: 'in'}
-  autocomplete = new google.maps.places.Autocomplete(input, options);
-  google.maps.event.addListener(autocomplete, 'place_changed', processSearchResult)
+  $(document).on("processSearchResult", (evt, place)->
+    $(".lat")[0].setAttribute('value', place.geometry.location.lat())
+    $(".lng")[0].setAttribute('value', place.geometry.location.lng())
+  )
+

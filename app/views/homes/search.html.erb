@@ -1,0 +1,7 @@
+<form action="/homes/search" method="GET">
+  <input type="text" name="q" id="near_location"/>
+  <input type="submit" value="search"/>
+</form>
+<div class="place_service"></div>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+<%=  javascript_include_tag 'application', 'lib.search', 'search' %>
